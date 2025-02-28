@@ -1,14 +1,15 @@
 const express = require("express");
 const main = require("./data/db");
 const app = express();
+require('dotenv').config();
 const Person = require("./models/person");
-const Menu = require("./models/Menu")
+const Menu = require("./models/Menu");
 const bodyParser = require("body-parser");
 
 const personRoutes = require("./routes/PersonRoutes");
 const MenuRoutes = require("./routes/MenuRoutes");
 app.use(bodyParser.json());
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 app.get("/", (req, res) => {
   res.send(`welcome to our Hotel`);
